@@ -57,3 +57,8 @@ export class Student extends Model {
     );
   }
 }
+
+export interface StudentIDParams
+{
+  sbd: string
+}
