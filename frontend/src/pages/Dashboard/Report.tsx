@@ -10,8 +10,9 @@ import {
   ReportResponse,
   SubjectReport,
 } from "../../types/report.response";
+import PageBreadcrumb from "../../components/common/PageBreadCrumb";
 
-export default function Home() {
+export default function Report() {
   const [report, setReport] = useState<ReportResponse | null>(null);
   const [selectedSubject, setSelectedSubject] =
     useState<SubjectReport | null>(null);
@@ -41,6 +42,7 @@ export default function Home() {
         description="Student Report"
       />
 
+      <PageBreadcrumb pageTitle="Thống kê kết quả thi THPT 2024" />
       <div className="space-y-6">
 
         <div className="flex justify-end">

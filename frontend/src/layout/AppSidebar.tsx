@@ -36,6 +36,11 @@ const navItems: NavItem[] = [
     icon: <TableIcon />,
     path: "/check-student-score",
   },
+  {
+    name: "Top Score",
+    icon: <PageIcon />,
+    subItems: [{name: "Top 10 Group A" , path: "/top-10-group-A"}]
+  },
   // {
   //   name: "Pages",
   //   icon: <PageIcon />,

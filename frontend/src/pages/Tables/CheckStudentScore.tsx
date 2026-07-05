@@ -25,6 +25,11 @@ export default function CheckStudentScore() {
       return;
     }
 
+    if (!/^\d{8}$/.test(sbd)) {
+      setError('Số báo danh không hợp lệ. Số báo danh phải gồm đúng 8 chữ số.');
+      return;
+    }
+
     setLoading(true);
     setError("");
 
@@ -47,10 +52,9 @@ export default function CheckStudentScore() {
         description="Tra cứu điểm thí sinh"
       />
 
-      <PageBreadcrumb pageTitle="Tra cứu điểm" />
+      <PageBreadcrumb pageTitle="Tra cứu điểm thi THPT 2024" />
 
       <div className="space-y-6">
-        <ComponentCard title="Tra cứu điểm thi THPT 2024">
 
           <div className="flex flex-col gap-4 mb-6 lg:flex-row">
 
@@ -91,8 +95,6 @@ export default function CheckStudentScore() {
           {student && (
             <StudentScoreTable student={student} />
           )}
-
-        </ComponentCard>
       </div>
     </>
   );
