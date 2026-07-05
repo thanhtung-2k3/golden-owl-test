@@ -1,5 +1,7 @@
 import app from "../app";
 import { initializeDatabase } from "../config/database";
+import "pg";
+
 
 let initialized = false;
 
