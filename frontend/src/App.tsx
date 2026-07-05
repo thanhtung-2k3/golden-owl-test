@@ -1,11 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router";
 import UserProfiles from "./pages/UserProfiles";
-import Videos from "./pages/UiElements/Videos";
-import Images from "./pages/UiElements/Images";
-import Alerts from "./pages/UiElements/Alerts";
-import Badges from "./pages/UiElements/Badges";
-import Avatars from "./pages/UiElements/Avatars";
-import Buttons from "./pages/UiElements/Buttons";
 import Calendar from "./pages/Calendar";
 import CheckStudentScore from "./pages/Tables/CheckStudentScore";
 import FormElements from "./pages/Forms/FormElements";

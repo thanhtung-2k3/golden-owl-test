@@ -1,7 +1,6 @@
 import { useState } from "react";
 
 import PageBreadcrumb from "../../components/common/PageBreadCrumb";
-import ComponentCard from "../../components/common/ComponentCard";
 import PageMeta from "../../components/common/PageMeta";
 import StudentScoreTable from "../../components/tables/StudentScoreTable";
 import { getStudentBySbd } from "../../apis/api";

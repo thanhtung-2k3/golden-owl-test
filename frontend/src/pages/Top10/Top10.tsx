@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 
 import PageBreadcrumb from "../../components/common/PageBreadCrumb";
-import ComponentCard from "../../components/common/ComponentCard";
 import PageMeta from "../../components/common/PageMeta";
 import Top10GroupATable from "../../components/tables/Top10Table";
 
