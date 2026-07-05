@@ -1,9 +1,11 @@
 import app from './app';
 //import { createServer as createViteServer } from 'vite';
 import { initializeDatabase } from './config/database';
+import dotenv from 'dotenv'
+dotenv.config()
 
 async function startServer() {
-  const PORT = 3000;
+  const PORT = Number(process.env.PORT) || 3000;
 
   // Initialize DB & Seeders
   try {

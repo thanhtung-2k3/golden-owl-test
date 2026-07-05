@@ -3,7 +3,8 @@ import path from 'path';
 import csv from "csv-parser";
 import fs from 'fs';
 import { Student } from '../models/Student';
-require('dotenv').config();
+import dotenv from 'dotenv'
+dotenv.config()
 
 let sequelize: Sequelize;
 const BATCH_SIZE = 1000;
