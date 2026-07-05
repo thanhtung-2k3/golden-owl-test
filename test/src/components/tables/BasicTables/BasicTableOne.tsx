@@ -8,8 +8,8 @@ import {
 
 import Badge from "../../ui/badge/Badge";
 import { useEffect, useState } from "react";
-import { studentScore } from "../../types/studentScoreData.response";
-import { getStudentScoreByID } from "../../../apis/getStudentScore";
+import { studentScore } from "../../../types/studentScoreData.response";
+import { getStudentBySbd } from "../../../apis/api";
 
 interface Order {
   id: number;

@@ -1,40 +1,84 @@
-import EcommerceMetrics from "../../components/ecommerce/EcommerceMetrics";
-import MonthlySalesChart from "../../components/ecommerce/MonthlySalesChart";
-import StatisticsChart from "../../components/ecommerce/StatisticsChart";
-import MonthlyTarget from "../../components/ecommerce/MonthlyTarget";
-import RecentOrders from "../../components/ecommerce/RecentOrders";
-import DemographicCard from "../../components/ecommerce/DemographicCard";
+import { useEffect, useState } from "react";
+
 import PageMeta from "../../components/common/PageMeta";
+import ScoreMetrics from "../../components/ecommerce/ScoreMetrics";
+import ScoreLevelChart from "../../components/ecommerce/ScoreLevelChart";
+
+import { fetchReports } from "../../apis/api";
+
+import {
+  ReportResponse,
+  SubjectReport,
+} from "../../types/report.response";
 
 export default function Home() {
+  const [report, setReport] = useState<ReportResponse | null>(null);
+  const [selectedSubject, setSelectedSubject] =
+    useState<SubjectReport | null>(null);
+
+  useEffect(() => {
+    const load = async () => {
+      const res = await fetchReports();
+
+      setReport(res);
+
+      if (res.data.length > 0) {
+        setSelectedSubject(res.data[0]);
+      }
+    };
+
+    load();
+  }, []);
+
+  if (!report || !selectedSubject) {
+    return <div className="p-6">Loading...</div>;
+  }
+
   return (
     <>
       <PageMeta
-        title="React.js Ecommerce Dashboard | TailAdmin - React.js Admin Dashboard Template"
-        description="This is React.js Ecommerce Dashboard page for TailAdmin - React.js Tailwind CSS Admin Dashboard Template"
+        title="Student Report"
+        description="Student Report"
       />
-      <div className="grid grid-cols-12 gap-4 md:gap-6">
-        <div className="col-span-12 space-y-6 xl:col-span-7">
-          <EcommerceMetrics />
 
-          <MonthlySalesChart />
+      <div className="space-y-6">
+
+        <div className="flex justify-end">
+
+          <select
+            className="rounded-lg border border-gray-300 px-4 py-2 dark:bg-gray-900 dark:border-gray-700"
+            value={selectedSubject.code}
+            onChange={(e) => {
+              const subject = report.data.find(
+                (x) => x.code === e.target.value
+              );
+
+              if (subject) {
+                setSelectedSubject(subject);
+              }
+            }}
+          >
+            {report.data.map((subject) => (
+              <option
+                key={subject.code}
+                value={subject.code}
+              >
+                {subject.name}
+              </option>
+            ))}
+          </select>
+
         </div>
 
-        <div className="col-span-12 xl:col-span-5">
-          <MonthlyTarget />
-        </div>
+        <ScoreMetrics
+          totalStudents={report.totalStudents}
+          subject={selectedSubject}
+        />
 
-        <div className="col-span-12">
-          <StatisticsChart />
-        </div>
+        <ScoreLevelChart
+          subject={selectedSubject}
+        />
 
-        <div className="col-span-12 xl:col-span-5">
-          <DemographicCard />
-        </div>
-
-        <div className="col-span-12 xl:col-span-7">
-          <RecentOrders />
-        </div>
       </div>
     </>
   );

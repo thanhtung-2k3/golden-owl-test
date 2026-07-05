@@ -28,13 +28,13 @@ type NavItem = {
 const navItems: NavItem[] = [
   {
     icon: <GridIcon />,
-    name: "Dashboard",
-    subItems: [{ name: "Ecommerce", path: "/", pro: false }],
+    name: "Report",
+    path: "/"
   },
   {
-    name: "Tables",
+    name: "Check Student Score",
     icon: <TableIcon />,
-    subItems: [{ name: "Basic Tables", path: "/basic-tables", pro: false }],
+    path: "/check-student-score",
   },
   // {
   //   name: "Pages",
