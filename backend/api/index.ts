@@ -1,5 +1,5 @@
-import app from "../app";
-import { initializeDatabase } from "../config/database";
+import app from "../src/app";
+import { initializeDatabase } from "../src/config/database";
 import "pg";
 
 
