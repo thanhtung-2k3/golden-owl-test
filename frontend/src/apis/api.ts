@@ -1,5 +1,5 @@
 import { StudentData, TopStudent, SubjectReport } from '../types/index.ts';
-const API_GET_STUDENT_SCORE_ENDPOINT = import.meta.env.BACKEND_ENDPOINT || "http://localhost:3000/api";
+const API_GET_STUDENT_SCORE_ENDPOINT = import.meta.env.VITE_BACKEND_ENDPOINT || "http://localhost:3000/api";
 
 export async function fetchReports(): Promise<{ data: SubjectReport[]; totalStudents: number; error?: string }> {
   try {
