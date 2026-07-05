@@ -12,7 +12,6 @@ export async function getReport(
       const subjects = subjectManager.getAllSubjects();
       const students = await Student.findAll();
 
-      // Dynamically calculate levels using OOP Subject classes
       const reports = subjects.map((sub) => {
         const counts = {
           level1: 0, // >= 8.0

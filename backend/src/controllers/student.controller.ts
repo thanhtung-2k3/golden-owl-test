@@ -41,7 +41,6 @@ export async function getTop10GroupA(
     res: Response
 ) {
     try {
-      // Find students who have all 3 compulsory Group A subjects (Toán, Lý, Hóa)
       const students = await Student.findAll({
         where: {
           toan: { [Op.ne]: null },
@@ -50,7 +49,6 @@ export async function getTop10GroupA(
         }
       });
 
-      // Calculate total Group A score and sort descending
       const top10 = students
         .map((s) => {
           const toan = s.dataValues.toan || 0;

@@ -2,13 +2,7 @@ export abstract class Subject {
   abstract readonly code: string;
   abstract readonly name: string;
 
-  /**
-   * Classify a score into one of the 4 requested levels:
-   * Level 1: >= 8.0 points
-   * Level 2: 8.0 points > && >= 6.0 points
-   * Level 3: 6.0 points > && >= 4.0 points
-   * Level 4: < 4.0 points
-   */
+
   public classifyScore(score: number | null | undefined): 'Level 1' | 'Level 2' | 'Level 3' | 'Level 4' | 'No Score' {
     if (score === null || score === undefined || isNaN(score)) return 'No Score';
     if (score >= 8.0) return 'Level 1';

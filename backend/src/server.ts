@@ -1,5 +1,4 @@
 import app from './app';
-//import { createServer as createViteServer } from 'vite';
 import { initializeDatabase } from './config/database';
 import dotenv from 'dotenv'
 dotenv.config()

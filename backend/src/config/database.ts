@@ -1,4 +1,4 @@
-import { Sequelize, DataTypes, Op } from 'sequelize';
+import { Sequelize, Op } from 'sequelize';
 import path from 'path';
 import csv from "csv-parser";
 import fs from 'fs';
@@ -9,7 +9,6 @@ dotenv.config()
 let sequelize: Sequelize;
 const BATCH_SIZE = 1000;
 
-// Connect to SQLite locally by default, or PostgreSQL if DATABASE_URL exists
 if (process.env.DATABASE_URL) {
   console.log('Connecting to PostgreSQL database...');
   sequelize = new Sequelize(process.env.DATABASE_URL, {
@@ -20,13 +19,7 @@ if (process.env.DATABASE_URL) {
   });
   Student.initialize(sequelize);
 } else {
-  console.log('Connecting to local SQLite database (since Cloud SQL is not enabled)...');
-  const dbPath = path.join(process.cwd(), 'thpt_2024.sqlite');
-  sequelize = new Sequelize({
-    dialect: 'sqlite',
-    storage: dbPath,
-    logging: false
-  });
+  throw new Error("Missing required environment variable: DATABASE_URL");
 }
 
 
@@ -105,7 +98,7 @@ export async function initializeDatabase() {
       console.log(`Database already has ${count} students. Skipping seeding.`);
     }
   } catch (error) {
-    console.error('Error during database initialization:', error);
+    console.error('Lỗi khởi tạo database', error);
     throw error;
   }
 }
