@@ -15,7 +15,7 @@ if (process.env.DATABASE_URL) {
     define: {
     freezeTableName: true,
     },
-    dialect: 'postgres'
+    dialectModule: require('pg')
   });
   Student.initialize(sequelize);
 } else {
